@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Update list of available packages
+    apt:
+      update_cache: yes
+  - name: Upgrade all packages to the latest version
+    apt:
+      name: "*"
+      state: latest
