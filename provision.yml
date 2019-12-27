@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Install python pip
+    apt:
+      pkg:
+      - python-pip
+      - python3-venv
+      - python3-pip
+      state: latest
+      update_cache: yes
+  - name: Install aws cli
+    pip:
+      name: awscli
